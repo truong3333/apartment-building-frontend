@@ -15,7 +15,16 @@ export default function NavBar(){
   return (
     <header className="bg-white shadow">
       <div className="max-w-7xl mx-auto py-4 px-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold"><Link to="/admin">Quản lý chung cư</Link></h1>
+        <h1 className="text-xl font-semibold">
+          <button onClick={() => {
+            if(!token) return navigate('/login')
+            if(role === 'ADMIN') return navigate('/admin')
+            if(role === 'RESIDENT') return navigate('/resident')
+            navigate('/login')
+          }} className="text-left">
+            Quản lý chung cư
+          </button>
+        </h1>
         <nav className="flex items-center gap-4">
           {token && role === 'ADMIN' && (
             <>
@@ -24,21 +33,26 @@ export default function NavBar(){
               <Link to="/admin/monthly-costs" className="text-sm">Quản lý chi phí tháng</Link>
               <Link to="/admin/reports" className="text-sm">Yêu cầu từ cư dân</Link>
               <Link to="/admin/apartment-history" className="text-sm">Lịch sử căn hộ</Link>
+              <Link to="/admin/statistics" className="text-sm">Thống kê</Link>
               <Link to="/admin/users" className="text-sm">Quản lý người dùng</Link>
             </>
           )}
 
           {token && role === 'RESIDENT' && (
             <>
-              <Link to="/resident" className="text-sm">My Dashboard</Link>
-              <Link to="/resident/history" className="text-sm">Lịch sử căn hộ</Link>
+              <Link to="/resident/apartments" className="text-sm">Căn hộ</Link>
+              <Link to="/resident/reports" className="text-sm">Yêu cầu</Link>
+              <Link to="/resident/monthly-costs" className="text-sm">Chi phí tháng</Link>
             </>
           )}
 
           {!token ? (
             <Link to="/login" className="text-sm">Đăng nhập</Link>
           ) : (
-            <button onClick={logout} className="text-sm text-red-600">Đăng xuất</button>
+            <>
+              <Link to="/profile" className="text-sm">Tài khoản</Link>
+              <button onClick={logout} className="text-sm text-red-600">Đăng xuất</button>
+            </>
           )}
         </nav>
       </div>

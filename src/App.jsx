@@ -15,6 +15,11 @@ import CreateReport from './pages/CreateReport'
 import Register from './pages/Register'
 import ApartmentDetail from './pages/ApartmentDetail'
 import AdminApartmentHistory from './pages/AdminApartmentHistory'
+import AdminStatistics from './pages/AdminStatistics'
+import MyProfile from './pages/MyProfile'
+import ResidentApartments from './pages/ResidentApartments'
+import MyReports from './pages/MyReports'
+import MyMonthlyCosts from './pages/MyMonthlyCosts'
 
 function RequireAuth({ children }){
   const token = localStorage.getItem('token')
@@ -40,8 +45,12 @@ export default function App(){
             <Route path="/admin/reports" element={<RequireAuth><Reports/></RequireAuth>} />
             <Route path="/admin/reports/create" element={<RequireAuth><CreateReport/></RequireAuth>} />
             <Route path="/admin/apartment-history" element={<RequireAuth><AdminApartmentHistory/></RequireAuth>} />
-            <Route path="/resident" element={<RequireAuth><ResidentDashboard/></RequireAuth>} />
-            <Route path="/resident/history" element={<RequireAuth><MyApartmentHistory/></RequireAuth>} />
+            <Route path="/admin/statistics" element={<RequireAuth><AdminStatistics/></RequireAuth>} />
+            <Route path="/resident" element={<RequireAuth><ResidentApartments/></RequireAuth>} />
+            <Route path="/resident/apartments" element={<RequireAuth><ResidentApartments/></RequireAuth>} />
+            <Route path="/resident/reports" element={<RequireAuth><MyReports/></RequireAuth>} />
+            <Route path="/resident/monthly-costs" element={<RequireAuth><MyMonthlyCosts/></RequireAuth>} />
+            <Route path="/profile" element={<RequireAuth><MyProfile/></RequireAuth>} />
             <Route path="/apartments/:roomNumber" element={<RequireAuth><ApartmentDetail/></RequireAuth>} />
             <Route path="/" element={<Navigate to="/login" replace />} />
           </Routes>

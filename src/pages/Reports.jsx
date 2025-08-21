@@ -21,7 +21,17 @@ export default function Reports(){
 
   function load(){
     api.get('/api/v1/report')
-      .then(r=>setList(r.data.result || []))
+      .then(r=>{
+        const items = r.data.result || []
+        // put waiting/non-done reports first
+        items.sort((a,b)=>{
+          const aDone = (a.status === 'done')
+          const bDone = (b.status === 'done')
+          if(aDone === bDone) return 0
+          return aDone ? 1 : -1
+        })
+        setList(items)
+      })
       .catch(()=>{})
   }
 

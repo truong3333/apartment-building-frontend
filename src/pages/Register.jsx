@@ -113,6 +113,9 @@ export default function Register(){
             {loading ? 'Đang đăng ký...' : 'Đăng ký'}
           </button>
         </div>
+         <div className="mt-3 text-sm">Đã có tài khoản ?
+          <a href="/login" className="text-sky-600"> Đăng nhập</a>
+        </div>
       </form>
     </div>
   )

@@ -141,7 +141,7 @@ export default function Apartments() {
 
           {/* Modal content */}
           <div className="relative bg-white p-6 rounded shadow w-96 z-10">
-            <h4 className="font-semibold mb-4">Edit Apartment {form.roomNumber}</h4>
+            <h4 className="font-semibold mb-4">Cập nhật căn hộ {form.roomNumber}</h4>
             <form onSubmit={saveEdit} className="flex flex-col gap-3">
               <label>
                 Diện tích (m²):
@@ -167,13 +167,13 @@ export default function Apartments() {
                   onClick={() => setEditing(null)}
                   className="px-3 py-1 bg-gray-400 text-white rounded text-sm"
                 >
-                  Cancel
+                  Huỷ
                 </button>
                 <button
                   type="submit"
                   className="px-3 py-1 bg-green-600 text-white rounded text-sm"
                 >
-                  Save
+                  Lưu
                 </button>
               </div>
             </form>

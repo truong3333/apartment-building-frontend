@@ -54,29 +54,29 @@ export default function Login(){
         navigate('/resident')
       }
     }catch(err){
-      setError(err?.response?.data?.message || 'Login failed')
+      setError(err?.response?.data?.message || 'Tài khoản hoặc mật khẩu không đúng')
     }
   }
 
   return (
     <div className="max-w-md mx-auto mt-12 bg-white p-6 rounded shadow">
-      <h2 className="text-xl font-semibold mb-4">Sign in</h2>
+      <h2 className="text-xl font-semibold mb-4">Đăng nhập</h2>
       <form onSubmit={submit} className="space-y-3">
         <div>
-          <label className="block text-sm">Username</label>
+          <label className="block text-sm">Tài khoản</label>
           <input className="w-full border rounded px-3 py-2" value={username} onChange={e=>setUsername(e.target.value)} />
         </div>
         <div>
-          <label className="block text-sm">Password</label>
+          <label className="block text-sm">Mật khẩu</label>
           <input type="password" className="w-full border rounded px-3 py-2" value={password} onChange={e=>setPassword(e.target.value)} />
         </div>
         {error && <div className="text-sm text-red-600">{error}</div>}
         <div>
-          <button className="bg-sky-600 text-white px-4 py-2 rounded">Sign in</button>
+          <button className="bg-sky-600 text-white px-4 py-2 rounded">Đăng nhập</button>
         </div>
       </form>
-      <div className="mt-3 text-sm">
-        <a href="/register" className="text-sky-600">Create an account</a>
+      <div className="mt-3 text-sm">Chưa có tài khoản ?
+        <a href="/register" className="text-sky-600"> Đăng ký</a>
       </div>
     </div>
   )

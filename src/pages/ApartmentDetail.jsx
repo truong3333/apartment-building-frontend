@@ -166,13 +166,13 @@ export default function ApartmentDetail(){
       <section className="mt-6">
         <h4 className="font-semibold mb-2">Chi phí tháng hiện tại</h4>
         {monthly ? (
-          <div>
-            <div className="text-sm text-gray-600 mb-2">
+          <div className="mx-auto w-full max-w-3xl">
+            <div className="text-sm text-gray-600 mb-2 text-center">
               Ngày tạo: {(monthly.month && monthly.year) ? `${monthly.month}/${monthly.year}` : (monthly.dateCreate ? new Date(monthly.dateCreate).toLocaleDateString() : '')} • Tổng: {monthly.totalAmount} VND
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead><tr><th className="p-2">Loại</th><th className="p-2">Mô tả</th><th className="p-2">Số tiền</th></tr></thead>
+              <table className="w-full text-sm table-auto">
+                <thead><tr className="text-left"><th className="p-2">Loại</th><th className="p-2">Mô tả</th><th className="p-2">Số tiền</th></tr></thead>
                 <tbody>
                   {monthly.listCost?.length ? monthly.listCost.map((c,i)=>(
                     <tr key={i} className="border-t">
